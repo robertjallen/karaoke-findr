@@ -15,7 +15,7 @@ const Home = () => (
 
       <div className="grid">
 
-        <a href="/search1" className="card">
+        <a href="/search" className="card">
           <h3>Search &rarr;</h3>
           <p>Get started by searching our karaoke near you</p>
         </a>
