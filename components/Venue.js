@@ -1,64 +1,35 @@
 import React, {useEffect, useState} from 'react'
-import {fetchUserLocation} from '../utils/actions'
-import {fetchVenuesByLatLng} from '../utils/actions'
-import VenueList from "../components/VenueList"
 
-export default function Search(props) {
+export default function Venue(props) {
 
-    const [isLoading, setIsLoading] = useState(false)
-    const [userLocation, setUserLocation] = useState('')
-    const [venues, setVenues] = useState([])
+// console.log("Venue", props)
+// console.log("categories", props.venue.categories)
 
 
-    useEffect(() => {
-        // kick off our asyncronous action creator
-        fetchUserLocation()
-        .then(function (res) {
-            console.log("location response",res.data.loc);
-            // dispatch LOCATION_SUCCESS 
-            setUserLocation(res.data.loc)
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error.response);
-        })
-    }, []);
-    
+const [newImage, setImg] = useState('https://picsum.photos/64/64?random=1?grayscale')
 
-    useEffect(()=>{
-        // //fetch venues by initial user location
-        fetchVenuesByLatLng(userLocation)
-        .then(function(res){
-            console.log(res)
-            setVenues(res.data.response.venues);
-        })
-        //   .catch(function() {
-        //     // Code for handling errors
-        //   });
-    },[userLocation])
+useEffect(()=>{
+    if(props.venue.categories[0]){
+        const icon = props.venue.categories[0].icon
+        // console.log(icon)
+        setImg(`${icon.prefix}64${icon.suffix}`)
+    }else{
+        console.log("no icon")
+        setImg('https://picsum.photos/64/64?random=1?grayscale')
+    }
+},[])
 
 
-    // useEffect(()=>{
-    //     dispatch(fetchVenues(state.location, state.categoryID))
-    // },[state.location])
-    
-    // useEffect(()=>{
-    //     dispatch(fetchVenues(state.location, state.categoryID))
-    // },[state.categoryID])
-
+// To assemble a photo URL, combine the response’s prefix + size + suffix. 
+// Example: https://igx.4sqi.net/img/general/300x500/5163668_xXFcZo7sU8aa1ZMhiQ2kIP7NllD48m7qsSwr1mJnFj4.jpg
 
     return (
-        <div>
-            search
-            {/* <Form
-            userLocation={state.userLocation} 
-            categoryID={state.categoryID}
-            />
-             */}
-
-            <VenueList
-                venues={venues}
-            />
+        <div className="card">
+            <img className="icon" src={newImage} alt="venue-icon"/>
+            <div className="info">
+                <h2>{props.venue.name}</h2>
+                <h4>{props.venue.location.formattedAddress[0]}</h4>
+            </div>
             <style jsx>{`
       .container {
         min-height: 100vh;

@@ -1,65 +1,17 @@
-import React, {useEffect, useState} from 'react'
-import {fetchUserLocation} from '../utils/actions'
-import {fetchVenuesByLatLng} from '../utils/actions'
-import VenueList from "../components/VenueList"
-
-export default function Search(props) {
-
-    const [isLoading, setIsLoading] = useState(false)
-    const [userLocation, setUserLocation] = useState('')
-    const [venues, setVenues] = useState([])
+import React, {useEffect} from 'react'
+import Venue from './Venue'
+// import hamburgerImage from './images/hamburger.png'
 
 
-    useEffect(() => {
-        // kick off our asyncronous action creator
-        fetchUserLocation()
-        .then(function (res) {
-            console.log("location response",res.data.loc);
-            // dispatch LOCATION_SUCCESS 
-            setUserLocation(res.data.loc)
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error.response);
-        })
-    }, []);
-    
-
-    useEffect(()=>{
-        // //fetch venues by initial user location
-        fetchVenuesByLatLng(userLocation)
-        .then(function(res){
-            console.log(res)
-            setVenues(res.data.response.venues);
-        })
-        //   .catch(function() {
-        //     // Code for handling errors
-        //   });
-    },[userLocation])
-
-
-    // useEffect(()=>{
-    //     dispatch(fetchVenues(state.location, state.categoryID))
-    // },[state.location])
-    
-    // useEffect(()=>{
-    //     dispatch(fetchVenues(state.location, state.categoryID))
-    // },[state.categoryID])
-
-
+export default function VenueList(props) {
     return (
-        <div>
-            search
-            {/* <Form
-            userLocation={state.userLocation} 
-            categoryID={state.categoryID}
-            />
-             */}
+        <div className="grid">
+            <h1>{props.location}</h1>
+                {/* <img className="hero" src={hamburgerImage}/> */}
 
-            <VenueList
-                venues={venues}
-            />
-            <style jsx>{`
+                {props.venues.map((item, index) => (<Venue venue={item} key={index}/>)
+                )}
+                <style jsx>{`
       .container {
         min-height: 100vh;
         padding: 0 0.5rem;
