@@ -10,8 +10,8 @@ export function fetchUserLocation() {
 // // fetch venues by lat & lng 
 export function fetchVenuesByLatLng(location){
     console.log({
-        secret: process.env.SECRET,
-        id: process.env.ID,
+        secret: process.env.secret,
+        id: process.env.id,
       })
 
     const ID = process.env.ID;
