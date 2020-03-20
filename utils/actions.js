@@ -16,7 +16,7 @@ export function fetchVenuesByLatLng(location){
 
     const ID = process.env.ID;
     const SECRET = process.env.SECRET;
-    
+
     const karaoke = "5744ccdfe4b0c0459246b4bb" 
-    return axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${ID}&client_secret=${SECRET}&v=20180323&limit=2&categoryID=${karaoke}&near=${location}&&radius=10000`)
+    return axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${ID}&client_secret=${SECRET}&v=20180323&limit=2&near=${location}&categoryId=${karaoke}&&radius=10000`)
 }

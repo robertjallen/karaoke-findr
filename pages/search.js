@@ -29,7 +29,7 @@ export default function Search(props) {
         // //fetch venues by initial user location
         fetchVenuesByLatLng(userLocation)
         .then(function(res){
-            console.log(res)
+            console.log(res.data.response.venues)
             setVenues(res.data.response.venues);
         })
         //   .catch(function() {
