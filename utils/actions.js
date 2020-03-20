@@ -10,11 +10,11 @@ export function fetchUserLocation() {
 // // fetch venues by lat & lng 
 export function fetchVenuesByLatLng(location){
     console.log({
-        SECRET: process.env.SECRET,
-        ID: process.env.ID,
+        secret: process.env.secret,
+        id: process.env.id,
       })
-    const ID = process.env.ID;
-    const SECRET = process.env.SECRET;
+    const ID = process.env.id;
+    const SECRET = process.env.secret;
     const karaoke = "5744ccdfe4b0c0459246b4bb" 
     return axios.get(`https://api.foursquare.com/v2/venues/search?client_id=${ID}&client_secret=${SECRET}&v=20180323&limit=2&categoryID=${karaoke}&near=${location}&&radius=10000`)
 }

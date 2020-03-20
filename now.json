@@ -1,6 +1,6 @@
 {
     "env": {
-        "SECRET": "@SECRET",
-        "ID": "@ID"
+        "secret": "@secret",
+        "id": "@id"
       }
 }
