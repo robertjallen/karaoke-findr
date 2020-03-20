@@ -46,7 +46,7 @@ export default function Search(props) {
     //     dispatch(fetchVenues(state.location, state.categoryID))
     // },[state.categoryID])
 
-
+//fix routes
     return (
         <div>
             search
