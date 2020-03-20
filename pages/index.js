@@ -15,10 +15,10 @@ const Home = () => (
 
       <div className="grid">
 
-        <div className="card">
+        <a href="/search" className="card">
           <h3>Search &rarr;</h3>
           <p>Get started by searching our karaoke near you</p>
-        </div>
+        </a>
 
         <div className="card">
           <h3>Update &rarr;</h3>
